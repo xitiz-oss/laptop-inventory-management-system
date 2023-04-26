@@ -1,0 +1,162 @@
+from datetime import datetime
+import read
+
+
+# generate_invoice creates the invoice for the laptops bought by the administrator for the shop
+def generate_invoice(invoice_details):
+    # using the datetime class the current date and time
+    now = datetime.now()
+
+    total_price = 0
+    total_vat = 0
+
+    # creating a file which does not pre-exist
+    _ = open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "x")
+
+    # opening the file to write and invoice generation
+    with open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "w") as invoice:
+        invoice.write("========================================================= \n")
+        invoice.write(f"                     XYZ Distributors \n")
+        invoice.write("========================================================= \n")
+        invoice.write("INVOICE \n")
+        invoice.write("\n")
+        invoice.write("Kamal Marg, Kathmandu 44600\n")
+        invoice.write("P.O BOX: 3304-20100\n")
+        invoice.write("TEL: 01-538727\n")
+        invoice.write("EMAIL: xyz_distributors@gmail.com\n")
+        invoice.write("========================================================= \n")
+        invoice.write(f"Served by: Admin\n")
+        invoice.write("\n")
+        invoice.write("--------------------------------------------------------- \n")
+        invoice.write("| NAME \t\t\t| BRAND \t| QUANTITY \t|\n")
+        invoice.write("--------------------------------------------------------- \n")
+        for details in invoice_details:
+            name = details[0]
+            item_details = details[1]
+            for item_ in item_details:
+                item_brand, item_price, item_vat, item_quantity = item_
+                total_price += item_price
+                total_vat += item_vat
+                invoice.write(f"| {name}" + " " * (21 - len(str(name))) + " |" + f" {item_brand}" + " " * (
+                        13 - len(item_brand)) + " |" + f" {item_quantity}" + " " * (
+                                      13 - len(str(item_quantity))) + " |\n")
+        invoice.write("--------------------------------------------------------- \n")
+        invoice.write("\n")
+        invoice.write(f" {str(now)} \n")
+        invoice.write("--------------------------------------------------------- \n")
+        invoice.write(f"                                   Price: ${total_price} \n")
+        invoice.write(f"                                     VAT: ${round(total_vat, 1)} \n")
+        invoice.write(f"                            Gross amount: ${total_price + total_vat}\n")
+        invoice.write("--------------------------------------------------------- \n")
+        invoice.write("                      x THANK YOU x \n")
+        invoice.write("========================================================= \n")
+
+    # invoice printed on console
+    print("========================================================= ")
+    print(f"                   XYZ Distributors ")
+    print("========================================================= ")
+    print("INVOICE ")
+    print()
+    print("Kamal Marg, Kathmandu 44600")
+    print("P.O BOX: 3304-20100")
+    print("TEL: 01-538727")
+    print("EMAIL: xyz_distributors@gmail.com")
+    print("========================================================= ")
+    print(f"Served by: Admin")
+    print("--------------------------------------------------------- ")
+    print("| NAME \t\t\t| BRAND \t| QUANTITY \t|")
+    print("--------------------------------------------------------- ")
+    for details in invoice_details:
+        name = details[0]
+        item_details = details[1]
+        for item_ in item_details:
+            item_brand, item_price, item_vat, item_quantity = item_
+            total_price += item_price
+            total_vat += item_vat
+            print(f"| {name}", " " * (19 - len(str(name))), " |", f" {item_brand}", " " * (
+                    10 - len(item_brand)), " |", f" {item_quantity}", " " * (10 - len(str(item_quantity))), " |")
+    print("--------------------------------------------------------- ")
+    print(f" {str(now)} ")
+    print("--------------------------------------------------------- ")
+    print(f"                                  Price: ${total_price} \n")
+    print(f"                                    VAT: ${round(total_vat, 1)} \n")
+    print(f"                           Gross amount: ${total_price + total_vat}\n")
+    print("--------------------------------------------------------- ")
+    print("                      x THANK YOU x ")
+    print("========================================================= ")
+    print()
+
+
+# generate_receipt creates the receipt for the laptops sold by the administrator from the shop
+def generate_receipt(laptop_item, laptop_quantity, recipient_name):
+    now_ = datetime.now()
+    # creating a file which does not pre-exist
+    __ = open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "x")
+
+    # calculating shipping cost and total price
+    shipping_cost = int(read.read()[laptop_item - 1][2]) * 0.1
+    total_price = int(read.read()[laptop_item - 1][2]) * laptop_quantity
+
+    # opening the file to write
+    # receipt generated
+    with open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "w") as receipt:
+        receipt.write("========================================================= \n")
+        receipt.write(f"                         SHOP \n")
+        receipt.write("========================================================= \n")
+        receipt.write("SALE RECEIPT \n")
+        receipt.write("\n")
+        receipt.write("Putalisadak, Kathmandu 44600\n")
+        receipt.write("P.O BOX: 3314-24500\n")
+        receipt.write("TEL: 01-534029\n")
+        receipt.write("EMAIL: laptop_shop@gmail.com\n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write(f" Sold to: {recipient_name} \n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write("| ITEM \t\t| NAME \t\t\t| QUANTITY \t|\n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write(f"| {laptop_item})" + " " * (
+                12 - len(str(laptop_item))) + " |" + f" {read.read()[laptop_item - 1][0]}" + " " * (
+                              21 - len(read.read()[laptop_item - 1][0])) + " |" + f" {laptop_quantity}" + " " * (
+                              13 - len(str(laptop_quantity))) + " |" + "\n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write("\n")
+        receipt.write(f" {str(now_)} \n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write(f"                                 Price: ${total_price} \n")
+        receipt.write(f"                         Shipping cost: ${round(shipping_cost, 1)} \n")
+        receipt.write(f"                           Total price: ${int(total_price) + shipping_cost} \n")
+        receipt.write("--------------------------------------------------------- \n")
+        receipt.write("                      x THANK YOU x \n")
+        receipt.write("========================================================= \n")
+
+    # printing the receipt on console
+    print("========================================================= ")
+    print(f"                         SHOP ")
+    print("========================================================= ")
+    print("SALE RECEIPT ")
+    print()
+    print("Putalisadak, Kathmandu 44600")
+    print("P.O BOX: 3314-24500")
+    print("TEL: 01-534029")
+    print("EMAIL: laptop_shop@gmail.com")
+    print("========================================================= ")
+    print(f"Sold to: {recipient_name}")
+    print()
+    print("--------------------------------------------------------- ")
+    print("| ITEM \t\t| NAME \t\t\t| QUANTITY  \t|")
+    print("--------------------------------------------------------- ")
+    print(f"| {laptop_item})", " " * (
+            10 - len(str(laptop_item))), " |", f" {read.read()[laptop_item - 1][0]}", " " * (
+                  18 - len(read.read()[laptop_item - 1][0])), " |", f" {laptop_quantity}", " " * (
+                  10 - len(str(laptop_quantity))), " |")
+    print("--------------------------------------------------------- ")
+    print()
+    print(f" {str(now_)} ")
+    print("--------------------------------------------------------- ")
+    print(f"                                 Price: ${total_price} ")
+    print(f"                         Shipping cost: ${round(shipping_cost, 1)} ")
+    print(f"                           Total price: ${int(total_price) + shipping_cost} ")
+    print("--------------------------------------------------------- ")
+    print("                    x THANK YOU x ")
+    print("========================================================= ")
+    print()
