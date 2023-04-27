@@ -11,7 +11,19 @@ import generation
 # main method
 def main():
     # shop details
-    print("" + "=" * 25 + "\nx Welcome Administrator x\n" + "=" * 25)
+    print("="*30)
+    print("ByteBrew Technologies")
+    print("="*30)
+    print()
+    print("Putalisadak, Kathmandu 44600")
+    print("P.O BOX: 3314-24500")
+    print("TEL: 01-534029")
+    print("laptop_shop@gmail.com")
+    print()
+    print("="*30)
+    print()
+    
+    print("=" * 25 + "\nx Welcome Administrator x\n" + "=" * 25)
     print()
     # entering "exit" at any time except for the middle of the program will exit the program and the data will be lost
     print('At any point if you would like to exit the system, please type "exit" ')

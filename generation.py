@@ -109,7 +109,7 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
     # receipt generated
     with open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "w") as receipt:
         receipt.write("========================================================= \n")
-        receipt.write(f"                         SHOP \n")
+        receipt.write(f"                 ByteBrew Technologies \n")
         receipt.write("========================================================= \n")
         receipt.write("SALE RECEIPT \n")
         receipt.write("\n")
@@ -139,7 +139,7 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
 
     # printing the receipt on console
     print("========================================================= ")
-    print(f"                         SHOP ")
+    print(f"                 ByteBrew Technologies")
     print("========================================================= ")
     print("SALE RECEIPT ")
     print()

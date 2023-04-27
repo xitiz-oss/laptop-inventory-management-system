@@ -5,5 +5,5 @@ Swift 7, Acer, 1150, 51, i5 9th Gen, GTX 3060
 Macbook Pro 16, Apple, 3230, 202, M1 Pro, Ten Core GPU
 
 YOGA, Lenovo, 1300, 83, i5 9th Gen, GTX 3050
-Thinkpad, Lenovo, 1500, 46, i7 9th Gen, No GPU
+Thinkpad, Lenovo, 1500, 58, i7 9th Gen, No GPU
 Macbook Air 13, Apple, 2200, 57, M1 Pro, Ten Core GPU
