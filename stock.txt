@@ -1,9 +1,9 @@
-Razer Blade, Razer, 3000, 103, i7 7th Gen, GTX 3070
+Razer Blade, Razer, 3000, 102, i7 7th Gen, GTX 3070
 XPS, Dell, 1400, 30, i5 9th Gen, GTX 3060
-Alienware, Alienware, 1800, 158, i9 9th Gen, GTX 3060
+Alienware, Alienware, 1800, 203, i9 9th Gen, GTX 3060
 Swift 7, Acer, 1150, 51, i5 9th Gen, GTX 3060
-Macbook Pro 16, Apple, 3230, 157, M1 Pro, Ten Core GPU
+Macbook Pro 16, Apple, 3230, 202, M1 Pro, Ten Core GPU
 
-YOGA, Lenovo, 1300, 26, i5 9th Gen, GTX 3050
+YOGA, Lenovo, 1300, 83, i5 9th Gen, GTX 3050
 Thinkpad, Lenovo, 1500, 46, i7 9th Gen, No GPU
-Macbook Air 13, Apple, 2200, 68, M1 Pro, Ten Core GPU
+Macbook Air 13, Apple, 2200, 57, M1 Pro, Ten Core GPU

@@ -1,3 +1,4 @@
+# imports from other files as libraries
 from datetime import datetime
 import read
 
@@ -10,10 +11,10 @@ def generate_invoice(invoice_details):
     total_price = 0
     total_vat = 0
 
-    # creating a file which does not pre-exist
+    # creating a unique file which does not pre-exist in Invoice folder using relative path
     _ = open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "x")
 
-    # opening the file to write and invoice generation
+    # opening the file to write and generating the invoice
     with open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "w") as invoice:
         invoice.write("========================================================= \n")
         invoice.write(f"                     XYZ Distributors \n")
@@ -31,12 +32,16 @@ def generate_invoice(invoice_details):
         invoice.write("| NAME \t\t\t| BRAND \t| QUANTITY \t|\n")
         invoice.write("--------------------------------------------------------- \n")
         for details in invoice_details:
+
             name = details[0]
+            # details[1] is actually a list stored within the 2D list
             item_details = details[1]
             for item_ in item_details:
+                # unpacking each value to store in the variables
                 item_brand, item_price, item_vat, item_quantity = item_
                 total_price += item_price
                 total_vat += item_vat
+                # writing the details in a tabulated manner
                 invoice.write(f"| {name}" + " " * (21 - len(str(name))) + " |" + f" {item_brand}" + " " * (
                         13 - len(item_brand)) + " |" + f" {item_quantity}" + " " * (
                                       13 - len(str(item_quantity))) + " |\n")
@@ -68,11 +73,14 @@ def generate_invoice(invoice_details):
     print("--------------------------------------------------------- ")
     for details in invoice_details:
         name = details[0]
+        # details[1] is actually a list stored within the 2D list
         item_details = details[1]
         for item_ in item_details:
+            # unpacking each value to store in the variables
             item_brand, item_price, item_vat, item_quantity = item_
             total_price += item_price
             total_vat += item_vat
+            # printing the details in a tabulated manner
             print(f"| {name}", " " * (19 - len(str(name))), " |", f" {item_brand}", " " * (
                     10 - len(item_brand)), " |", f" {item_quantity}", " " * (10 - len(str(item_quantity))), " |")
     print("--------------------------------------------------------- ")
@@ -94,7 +102,7 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
     __ = open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "x")
 
     # calculating shipping cost and total price
-    shipping_cost = int(read.read()[laptop_item - 1][2]) * 0.1
+    shipping_cost = int(read.read()[laptop_item - 1][2]) * 0.03
     total_price = int(read.read()[laptop_item - 1][2]) * laptop_quantity
 
     # opening the file to write
@@ -114,9 +122,9 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
         receipt.write("--------------------------------------------------------- \n")
         receipt.write("| ITEM \t\t| NAME \t\t\t| QUANTITY \t|\n")
         receipt.write("--------------------------------------------------------- \n")
-        receipt.write(f"| {laptop_item})" + " " * (
-                12 - len(str(laptop_item))) + " |" + f" {read.read()[laptop_item - 1][0]}" + " " * (
-                              21 - len(read.read()[laptop_item - 1][0])) + " |" + f" {laptop_quantity}" + " " * (
+        # writing the details in a tabulated manner
+        receipt.write(f"| {laptop_item})" + " " * (12 - len(str(laptop_item))) + " |" + f" {read.read()[laptop_item - 1][0]}" + " " * (
+                21 - len(read.read()[laptop_item - 1][0])) + " |" + f" {laptop_quantity}" + " " * (
                               13 - len(str(laptop_quantity))) + " |" + "\n")
         receipt.write("--------------------------------------------------------- \n")
         receipt.write("\n")
@@ -145,10 +153,10 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
     print("--------------------------------------------------------- ")
     print("| ITEM \t\t| NAME \t\t\t| QUANTITY  \t|")
     print("--------------------------------------------------------- ")
-    print(f"| {laptop_item})", " " * (
-            10 - len(str(laptop_item))), " |", f" {read.read()[laptop_item - 1][0]}", " " * (
-                  18 - len(read.read()[laptop_item - 1][0])), " |", f" {laptop_quantity}", " " * (
-                  10 - len(str(laptop_quantity))), " |")
+    # printing the details in a tabulated manner
+    print(f"| {laptop_item})", " " * (10 - len(str(laptop_item))), " |", f" {read.read()[laptop_item - 1][0]}", " " * (
+            18 - len(read.read()[laptop_item - 1][0])), " |", f" {laptop_quantity}", " " * (
+                                       10 - len(str(laptop_quantity))), " |")
     print("--------------------------------------------------------- ")
     print()
     print(f" {str(now_)} ")

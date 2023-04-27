@@ -1,3 +1,4 @@
+# imports from other files as libraries
 import operations
 import read
 
@@ -7,10 +8,14 @@ import read
 def get_buy_details():
     # creating an infinite loop scenario along with exception handling to re-prompt if any invalid input is provided
     while True:
+        # usage of try block to catch exceptions and handle them correctly
         try:
             print()
+            # list of manufacturers
             manufacturers = ["Lenovo", "Razer", "Dell", "Alienware", "Acer", "Apple"]
             print("You can buy from the following manufacturers: ")
+
+            # displaying available manufacturers
             for i in range(len(manufacturers)):
                 print(f"{i + 1}) {manufacturers[i]}")
 
@@ -18,6 +23,7 @@ def get_buy_details():
             print("Enter the name of manufacturer to buy from")
             manufacturer_chosen = input(">>> ").title().rstrip().lstrip()
             operations.exit_on_will(manufacturer_chosen)
+            # validating the choice of manufacturer chosen from the available manufacturers
             while manufacturer_chosen not in manufacturers:
                 print("INVALID INPUT \nSELECT FROM THE GIVEN NAMES OF MANUFACTURER")
                 print()
@@ -25,7 +31,9 @@ def get_buy_details():
                 manufacturer_chosen = input(">>> ").title().rstrip().lstrip()
                 operations.exit_on_will(manufacturer_chosen)
 
+            # executable code for when 'lenovo' is chosen as the manufacturer
             if manufacturer_chosen == "Lenovo":
+                # 2D list storing lenovo laptop details
                 lenovo = [["Thinkpad", 1500, "i7 9th Gen", "No GPU"],
                           ["Lenovo Legion Pro", 1900, "i9 9th Gen", "GTX 3080"],
                           ["YOGA", 1300, "i5 9th Gen", "GTX 3050"]]
@@ -39,34 +47,33 @@ def get_buy_details():
                 ''')
                 print()
                 print(f"{manufacturer_chosen} has following laptops: ")
+                # iterating over the 2D list to display the available laptops
                 for a in range(len(lenovo)):
                     print("=" * 40)
-                    print(f"{a + 1}) Name: {lenovo[a][0]} \n \tProcessor: {lenovo[a][2]}  \n \tGraphics: "
-                          f"{lenovo[a][3]} \n \tPrice: {lenovo[a][1]}")
+                    print(f"{a + 1}) Name: {lenovo[a][0]} \n \tProcessor: {lenovo[a][2]}  \n \tGraphics: {lenovo[a][3]} \n \tPrice: {lenovo[a][1]}")
                     print("=" * 40)
 
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         lenovo_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if lenovo_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return lenovo[0][0], manufacturer_chosen, quantity_chosen, lenovo[0][1], lenovo[0][2], \
-                                       lenovo[0][3]
+                                return lenovo[0][0], manufacturer_chosen, quantity_chosen, lenovo[0][1], lenovo[0][2], lenovo[0][3]
 
                             elif lenovo_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return lenovo[1][0], manufacturer_chosen, quantity_chosen, lenovo[1][1], lenovo[1][2], \
-                                       lenovo[1][3]
+                                return lenovo[1][0], manufacturer_chosen, quantity_chosen, lenovo[1][1], lenovo[1][2], lenovo[1][3]
                             elif lenovo_chosen == 3:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return lenovo[2][0], manufacturer_chosen, quantity_chosen, lenovo[2][1], lenovo[2][2], \
-                                       lenovo[2][3]
+                                return lenovo[2][0], manufacturer_chosen, quantity_chosen, lenovo[2][1], lenovo[2][2], lenovo[2][3]
                             elif lenovo_chosen > 3 or lenovo_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -77,6 +84,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
+            # executable code for when 'lenovo' ios chosen as the manufacturer
             elif manufacturer_chosen == "Razer":
                 razer = ["Razer Blade", 3000, "i7 7th Gen", "GTX 3070"]
                 print('''
@@ -90,15 +98,16 @@ def get_buy_details():
                 print()
                 print(f"{manufacturer_chosen} has following laptops: ")
                 print("=" * 40)
-                print(f"1) Name: {razer[0]} \n \tProcessor: {razer[2]}  \n \tGraphics: "
-                      f"{razer[3]} \n \tPrice: {razer[1]}")
+                print(f"1) Name: {razer[0]} \n \tProcessor: {razer[2]}  \n \tGraphics: {razer[3]} \n \tPrice: {razer[1]}")
                 print("=" * 40)
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         razer_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if razer_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
@@ -113,7 +122,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
-
+            # executable code for when 'lenovo' ios chosen as the manufacturer
             elif manufacturer_chosen == "Dell":
                 dell = [["XPS", 1200, "i5 5th Gen", "GTX 3060"], ["Inspiron", 1000, "i5 9th Gen", "No GPU"]]
                 print('''
@@ -128,26 +137,25 @@ def get_buy_details():
 
                 for a in range(len(dell)):
                     print("=" * 40)
-                    print(f"{a + 1}) Name: {dell[a][0]} \n \tProcessor: {dell[a][2]}  \n \tGraphics: "
-                          f"{dell[a][3]} \n \tPrice: {dell[a][1]}")
+                    print(f"{a + 1}) Name: {dell[a][0]} \n \tProcessor: {dell[a][2]}  \n \tGraphics: {dell[a][3]} \n \tPrice: {dell[a][1]}")
                     print("=" * 40)
 
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         dell_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if dell_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return dell[0][0], manufacturer_chosen, quantity_chosen, dell[0][1], dell[0][2], \
-                                       dell[0][3]
+                                return dell[0][0], manufacturer_chosen, quantity_chosen, dell[0][1], dell[0][2], dell[0][3]
                             elif dell_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return dell[1][0], manufacturer_chosen, quantity_chosen, dell[1][1], dell[1][2], \
-                                       dell[1][3]
+                                return dell[1][0], manufacturer_chosen, quantity_chosen, dell[1][1], dell[1][2], dell[1][3]
                             elif dell_chosen > 1 or dell_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -158,6 +166,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
+            # executable code for when 'lenovo' ios chosen as the manufacturer
             elif manufacturer_chosen == "Alienware":
                 alienware = ["Alienware", 1800, "i9 9th Gen", "GTX 3060"]
                 print('''     
@@ -170,20 +179,20 @@ def get_buy_details():
                 print()
                 print(f"{manufacturer_chosen} has following laptops: ")
                 print("=" * 40)
-                print(f"1) Name: {alienware[0]} \n \tProcessor: {alienware[2]}  \n \tGraphics: "
-                      f"{alienware[3]} \n \tPrice: {alienware[1]}")
+                print(f"1) Name: {alienware[0]} \n \tProcessor: {alienware[2]}  \n \tGraphics: {alienware[3]} \n \tPrice: {alienware[1]}")
                 print("=" * 40)
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         alienware_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if alienware_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return alienware[0], manufacturer_chosen, quantity_chosen, alienware[1], alienware[2], \
-                                       alienware[3]
+                                return alienware[0], manufacturer_chosen, quantity_chosen, alienware[1], alienware[2], alienware[3]
                             elif alienware_chosen > 1 or alienware_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -194,6 +203,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
+            # executable code for when 'lenovo' ios chosen as the manufacturer
             elif manufacturer_chosen == "Acer":
                 acer = [["Swift 7", 1000, "i5 9th Gen", "GTX 3060"],
                         ["Predator", 1900, "i9 9th Gen", "GTX 3080"]]
@@ -206,28 +216,28 @@ def get_buy_details():
                 /__/     \__\ \______||_______|| _| `._____|''')
                 print()
                 print(f"{manufacturer_chosen} has following laptops: ")
+                # iterating over the 2D list to display the available laptops
                 for a in range(len(acer)):
                     print("=" * 40)
-                    print(f"{a + 1}) Name: {acer[a][0]} \n \tProcessor: {acer[a][2]}  \n \tGraphics: "
-                          f"{acer[a][3]} \n \tPrice: {acer[a][1]}")
+                    print(f"{a + 1}) Name: {acer[a][0]} \n \tProcessor: {acer[a][2]}  \n \tGraphics: {acer[a][3]} \n \tPrice: {acer[a][1]}")
                     print("=" * 40)
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         acer_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if acer_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return acer[0][0], manufacturer_chosen, quantity_chosen, acer[0][1], acer[0][2], \
-                                       acer[0][3]
+                                return acer[0][0], manufacturer_chosen, quantity_chosen, acer[0][1], acer[0][2], acer[0][3]
 
                             elif acer_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return acer[1][0], manufacturer_chosen, quantity_chosen, acer[1][1], acer[1][2], \
-                                       acer[1][3]
+                                return acer[1][0], manufacturer_chosen, quantity_chosen, acer[1][1], acer[1][2], acer[1][3]
                             elif acer_chosen > 2 or acer_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -238,6 +248,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
+            # executable code for when 'lenovo' ios chosen as the manufacturer
             elif manufacturer_chosen == "Apple":
                 apple = [["Macbook Pro 16", 3200, "M1 Pro", "Ten Core GPU"],
                          ["Macbook Air 13", 2200, "M1 Pro", "Ten Core GPU"]]
@@ -250,28 +261,28 @@ def get_buy_details():
                 /__/     \__\ | _|      | _|      |_______||_______|''')
                 print()
                 print(f"{manufacturer_chosen} has following laptops: ")
+                # iterating over the 2D list to display the available laptops
                 for a in range(len(apple)):
                     print("=" * 40)
-                    print(f"{a + 1}) Name: {apple[a][0]} \n \tProcessor: {apple[a][2]}  \n \tGraphics: "
-                          f"{apple[a][3]} \n \tPrice: {apple[a][1]}")
+                    print(f"{a + 1}) Name: {apple[a][0]} \n \tProcessor: {apple[a][2]}  \n \tGraphics: {apple[a][3]} \n \tPrice: {apple[a][1]}")
                     print("=" * 40)
 
                 print()
                 print("Enter the laptop id you want to buy: ")
                 while True:
+                    # usage of try-except block to handle the exceptions correctly
                     try:
                         apple_chosen = int(input(">>> "))
                         while True:
+                            # returning the respective values as per the selection made
                             if apple_chosen == 1:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return apple[0][0], manufacturer_chosen, quantity_chosen, apple[0][1], apple[0][2], \
-                                       apple[0][3]
+                                return apple[0][0], manufacturer_chosen, quantity_chosen, apple[0][1], apple[0][2], apple[0][3]
                             elif apple_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
-                                return apple[1][0], manufacturer_chosen, quantity_chosen, apple[1][1], apple[1][2], \
-                                       apple[1][3]
+                                return apple[1][0], manufacturer_chosen, quantity_chosen, apple[1][1], apple[1][2], apple[1][3]
                             elif apple_chosen > 1 or apple_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -287,9 +298,9 @@ def get_buy_details():
             break
 
 
-# get_info method to get the input details for the selling interface
+# get_info method where administrator enters detail of the customer and the laptop being sold
 def get_info():
-    customer_name = input("Customer name: ")
+    customer_name = input("Customer name: ").lstrip().rstrip()
     operations.exit_on_will(customer_name)
 
     print()
@@ -297,15 +308,17 @@ def get_info():
     while not customer_name.isalpha():
         print("Please enter a valid name and not an integer")
         print()
-        customer_name = input("Customer name: ")
+        customer_name = input("Customer name: ").lstrip().rstrip()
         operations.exit_on_will(customer_name)
 
+    # displaying laptops to show the id of laptops
     for i in range(len(read.read())):
         print(f"{i + 1})->{read.read()[i][0]}", end=" \t\t")
     print()
 
     # creating an infinite loop scenario along with exception handling to re-prompt if any invalid input is provided
     while True:
+        # usage of try-except block to handle the exceptions correctly
         try:
             print(f"Enter {customer_name}'s choice: ")
             item_buy = int(input(">>>"))
@@ -316,6 +329,8 @@ def get_info():
             print()
 
             while True:
+                # validating the input provided within the loop such that for any invalid/inappropriate input, it can be re-prompted
+                # which ensure the correct flow of thw system
                 if item_buy > len(read.read()) or item_buy <= 0:
                     print("x__ERROR__x")
                     print("Choice is out of range")
