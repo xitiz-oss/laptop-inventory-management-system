@@ -4,6 +4,30 @@ import read
 
 # buy method is called for the buying interface which updates the stock which are bought from the manufacturers
 def buy(bought_laptop_name, manufacturer, bought_laptop_qty, bought_laptop_price, chosen_cpu, chosen_gpu):
+    """
+    Checks the availability of laptop in the stock file, if available values are returned, else the details are written on the file and only then returned matching that line
+    Returns the laptop name chosen, manufacturer, existing quantity, calculated quantity, price, calculated vat and flag
+
+    Parameters:
+        :param bought_laptop_name: Name of the laptop bought
+        :param manufacturer: Manufacturer of the laptop bought
+        :param bought_laptop_price: Price of the laptop bought
+        :param chosen_cpu: CPU of the laptop bought
+        :param chosen_gpu: GPU of the laptop bought
+
+    Type:
+        :type bought_laptop_name: str
+        :type manufacturer: str
+        :type bought_laptop_qty: int
+        :type bought_laptop_price: int
+        :type chosen_cpu: str
+        :type chosen_gpu: str
+
+
+    Returns:
+        :return: bought_laptop_name, manufacturer, bought_laptop_price, vat, old_quantity, new_qty, flag_
+
+    """
     flag_ = True
 
     # calculating vat

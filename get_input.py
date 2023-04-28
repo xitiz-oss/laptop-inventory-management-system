@@ -6,6 +6,21 @@ import read
 # get_buy_details methods prompts for all the details and returns the appropriate values when returned along with
 # condition checking
 def get_buy_details():
+    """
+    Admin can choose from various manufacturers and choose the desired laptop and respective quantity from the manufacturer
+    Returns the laptop name, manufacturer, quantity bought, price of laptop, cpu and gpu of laptop
+
+    Returns:
+        :return: laptop_name, manufacturer, quantity, price, cpu, gpu
+
+        If manufacturer is 'Lenovo', lenovo[0][0], manufacturer_chosen, quantity_chosen, lenovo[0][1], lenovo[0][2], lenovo[0][3] is returned
+        Else if manufacturer is 'Razer', razer[0], manufacturer_chosen, quantity_chosen, razer[1], razer[2], razer[3] is returned
+        Else if manufacturer is 'Dell', dell[0][0], manufacturer_chosen, quantity_chosen, dell[0][1], dell[0][2], dell[0][3] is returned
+        Else if manufacturer is 'Alienware', alienware[0], manufacturer_chosen, quantity_chosen, alienware[1], alienware[2], alienware[3] is returned
+        Else if manufacturer is 'Acer', acer[0][0], manufacturer_chosen, quantity_chosen, acer[0][1], acer[0][2], acer[0][3] is returned
+        Else if manufacturer is 'Apple', apple[0][0], manufacturer_chosen, quantity_chosen, apple[0][1], apple[0][2], apple[0][3] is returned
+
+    """
     # creating an infinite loop scenario along with exception handling to re-prompt if any invalid input is provided
     while True:
         # usage of try block to catch exceptions and handle them correctly
@@ -23,6 +38,7 @@ def get_buy_details():
             print("Enter the name of manufacturer to buy from")
             manufacturer_chosen = input(">>> ").title().rstrip().lstrip()
             operations.exit_on_will(manufacturer_chosen)
+
             # validating the choice of manufacturer chosen from the available manufacturers
             while manufacturer_chosen not in manufacturers:
                 print("INVALID INPUT \nSELECT FROM THE GIVEN NAMES OF MANUFACTURER")
@@ -69,10 +85,12 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return lenovo[1][0], manufacturer_chosen, quantity_chosen, lenovo[1][1], lenovo[1][2], lenovo[1][3]
+
                             elif lenovo_chosen == 3:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return lenovo[2][0], manufacturer_chosen, quantity_chosen, lenovo[2][1], lenovo[2][2], lenovo[2][3]
+
                             elif lenovo_chosen > 3 or lenovo_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -110,6 +128,7 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return razer[0], manufacturer_chosen, quantity_chosen, razer[1], razer[2], razer[3]
+
                             elif razer_chosen > 1 or razer_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -150,10 +169,12 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return dell[0][0], manufacturer_chosen, quantity_chosen, dell[0][1], dell[0][2], dell[0][3]
+
                             elif dell_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return dell[1][0], manufacturer_chosen, quantity_chosen, dell[1][1], dell[1][2], dell[1][3]
+
                             elif dell_chosen > 1 or dell_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -191,6 +212,7 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return alienware[0], manufacturer_chosen, quantity_chosen, alienware[1], alienware[2], alienware[3]
+
                             elif alienware_chosen > 1 or alienware_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -236,6 +258,7 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return acer[1][0], manufacturer_chosen, quantity_chosen, acer[1][1], acer[1][2], acer[1][3]
+
                             elif acer_chosen > 2 or acer_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -277,10 +300,12 @@ def get_buy_details():
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return apple[0][0], manufacturer_chosen, quantity_chosen, apple[0][1], apple[0][2], apple[0][3]
+
                             elif apple_chosen == 2:
                                 print("Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
                                 return apple[1][0], manufacturer_chosen, quantity_chosen, apple[1][1], apple[1][2], apple[1][3]
+
                             elif apple_chosen > 1 or apple_chosen <= 0:
                                 print()
                                 print("INVALID INPUT")
@@ -298,6 +323,13 @@ def get_buy_details():
 
 # get_info method where administrator enters detail of the customer and the laptop being sold
 def get_info():
+    """
+    Admin enters the name of the customer and the choice of the laptop of customer such that the admin can sell the laptop to the customer
+    Returns the buy id of laptop, quantity bought by the customer, customer name
+
+    Returns:
+        :return: item_buy, quantity_buy, customer_name
+    """
     customer_name = input("Customer name: ").lstrip().rstrip()
     operations.exit_on_will(customer_name)
 
@@ -337,12 +369,14 @@ def get_info():
                     item_buy = int(input(">>>"))
                     print(f"Enter the no. of laptops chosen by {customer_name} ")
                     quantity_buy = int(input(">>>"))
+
                 elif quantity_buy <= 0:
                     print("x__ERROR__x")
                     print("Enter Valid Quantity")
                     print()
                     print(f"Enter the no. of laptops chosen by {customer_name} ")
                     quantity_buy = int(input(">>>"))
+
                 elif (int(read.read()[item_buy - 1][3]) - quantity_buy) < 0:
                     print()
                     print("NOT ENOUGH STOCK! ")
@@ -350,7 +384,9 @@ def get_info():
                           f"{read.read()[item_buy - 1][0]} left...")
                     print("Please make your selection accordingly")
                     print()
+
                     operations.display()
+
                     print()
                     print("Re-enter selection")
                     print(f"Enter {customer_name}'s choice: ")

@@ -1,5 +1,21 @@
 # updating the file by directly accessing the file and replacing the values
 def update(laptop_name, existing_quantity, new_quantity, get_flag):
+    """
+    Reads the file and depending upon the flag, the file is updated by replacing and writing over it
+
+    Parameters:
+        :param laptop_name: Name of the Laptop
+        :param existing_quantity: Existing quantity of laptop in file
+        :param new_quantity: New quantity of laptop to be updated in file
+        :param get_flag: True if invoked from buy and False if invoked from sell
+
+    Type:
+        :type laptop_name: str
+        :type existing_quantity: int
+        :type new_quantity: int
+        :type get_flag: bool
+
+    """
     with open("stock.txt", "r") as to_update:
         check_lines = to_update.readlines()
 

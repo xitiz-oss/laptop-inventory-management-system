@@ -5,6 +5,16 @@ import read
 
 # generate_invoice creates the invoice for the laptops bought by the administrator for the shop
 def generate_invoice(invoice_details):
+    """
+    When invoked, all the details regarding the buying part is unpacked to generate an invoice on file as well as by printing on console
+
+    Parameters:
+        :param invoice_details: list containing details about bought laptop
+
+    Type:
+        :type invoice_details: list
+
+    """
     # using the datetime class the current date and time
     now = datetime.now()
 
@@ -14,25 +24,26 @@ def generate_invoice(invoice_details):
     # creating a unique file which does not pre-exist in Invoice folder using relative path
     _ = open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "x")
 
+
+
     # opening the file to write and generating the invoice
     with open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "w") as invoice:
         invoice.write("========================================================= \n")
-        invoice.write(f"                     XYZ Distributors \n")
+        invoice.write(f"                       INVOICE \n")
         invoice.write("========================================================= \n")
-        invoice.write("INVOICE \n")
+        invoice.write("--Automated--\n")
         invoice.write("\n")
-        invoice.write("Kamal Marg, Kathmandu 44600\n")
-        invoice.write("P.O BOX: 3304-20100\n")
-        invoice.write("TEL: 01-538727\n")
-        invoice.write("EMAIL: xyz_distributors@gmail.com\n")
+        invoice.write("\n")
+        invoice.write(f"Bought by: ByteBrew Technologies\n")
         invoice.write("========================================================= \n")
         invoice.write(f"Served by: Admin\n")
         invoice.write("\n")
+        invoice.write("\n")
+        invoice.write("Laptops bought:\n")
         invoice.write("--------------------------------------------------------- \n")
         invoice.write("| NAME \t\t\t| BRAND \t| QUANTITY \t|\n")
         invoice.write("--------------------------------------------------------- \n")
         for details in invoice_details:
-
             name = details[0]
             # details[1] is actually a list stored within the 2D list
             item_details = details[1]
@@ -58,16 +69,17 @@ def generate_invoice(invoice_details):
 
     # invoice printed on console
     print("========================================================= ")
-    print(f"                   XYZ Distributors ")
+    print(f"                        INVOICE ")
     print("========================================================= ")
-    print("INVOICE ")
+    print("--Automated-- ")
     print()
-    print("Kamal Marg, Kathmandu 44600")
-    print("P.O BOX: 3304-20100")
-    print("TEL: 01-538727")
-    print("EMAIL: xyz_distributors@gmail.com")
+    print()
+    print("Bought by: ByteBrew Technologies")
     print("========================================================= ")
     print(f"Served by: Admin")
+    print()
+    print()
+    print("Laptops bought:")
     print("--------------------------------------------------------- ")
     print("| NAME \t\t\t| BRAND \t| QUANTITY \t|")
     print("--------------------------------------------------------- ")
@@ -97,6 +109,21 @@ def generate_invoice(invoice_details):
 
 # generate_receipt creates the receipt for the laptops sold by the administrator from the shop
 def generate_receipt(laptop_item, laptop_quantity, recipient_name):
+    """
+    When invoked, all the details regarding the selling part is unpacked to generate a receipt on file as well as by printing on console
+
+    Parameters:
+        :param laptop_item: item id of laptop
+        :param laptop_quantity: quantity of laptop
+        :param recipient_name: name of the recipient
+
+    Type:
+        :type laptop_item: int
+        :type laptop_quantity: int
+        :type recipient_name: str
+
+    """
+    #
     now_ = datetime.now()
     # creating a file which does not pre-exist
     __ = open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "x")

@@ -4,6 +4,13 @@ global invoice_details, quantity, item, settings, lines, flag, same_laptop_dict,
 
 # function which reads the original stock file
 def read():
+    """
+    Reads the file and converts the details into 2d list
+    Returns the 2d list of laptop details
+
+    Returns:
+        :return: specifications_details
+    """
     # opening a file to read
     with open("stock.txt", "r") as file:
         # readlines() returns a list of each line
@@ -21,6 +28,17 @@ def read():
 
 # function to match the name of the laptop and provide its line number in the file
 def get_line(phrase, file_name):
+    """
+    Reads the file and enumerates over the lines to check for the laptop name provided as parameter
+    When the name is found in a line, then the line number is returned
+
+    Parameters:
+        :param phrase: Name of the laptop
+        :param file_name: File to check
+
+    Returns:
+        :return: i
+    """
     # file opened to read
     with open(file_name, "r") as line_number:
         # each line read as lists

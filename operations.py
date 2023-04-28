@@ -4,6 +4,9 @@ import read
 
 # display method to display all the available laptops from the stock file
 def display():
+    """
+    Reads and unpacks the 2d list and the details are printed in a tabulated manner
+    """
     display_specification = read.read()
     print("Following Laptops are available in our shop: ")
     print()
@@ -29,6 +32,12 @@ def display():
 # function that takes input as parameter
 # if the input entered is "exit" at any point of the program then the program ends
 def exit_on_will(get_prompt):
+    """
+    Checks if the parameter is 'exit', and if so then the system is exited
+
+    Parameters:
+        :param get_prompt: any non-process input
+    """
     if get_prompt == "exit":
         print("SYSTEM EXITING" + "." + "." + ".")
         print("EXITED")

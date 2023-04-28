@@ -10,6 +10,11 @@ import generation
 
 # main method
 def main():
+    """
+    Carries out all the tasks of the program
+    Function invocation, Continuation, choosing operations are all carried out within main()
+    The entire flow of program is based around main()
+    """
     # shop details
     print("="*30)
     print("ByteBrew Technologies")
