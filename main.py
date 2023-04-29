@@ -19,12 +19,10 @@ def main():
     print("="*30)
     print("ByteBrew Technologies")
     print("="*30)
-    print()
     print("Putalisadak, Kathmandu 44600")
     print("P.O BOX: 3314-24500")
     print("TEL: 01-534029")
     print("laptop_shop@gmail.com")
-    print()
     print("="*30)
     print()
     
