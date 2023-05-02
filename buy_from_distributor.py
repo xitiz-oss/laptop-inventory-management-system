@@ -76,6 +76,6 @@ def buy(bought_laptop_name, manufacturer, bought_laptop_qty, bought_laptop_price
         # storing the existing quantity
         old_quantity = read.read()[read.get_line(bought_laptop_name, "stock.txt") - 1][3]
         # updating the existing quantity
-        new_qty = int(read.read()[read.get_line(bought_laptop_name, "stock.txt") - 1][3]) + bought_laptop_qty
+        new_qty = old_quantity
 
         return bought_laptop_name, manufacturer, bought_laptop_price, vat, old_quantity, new_qty, flag_

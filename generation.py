@@ -19,12 +19,9 @@ def generate_invoice(invoice_details):
     now = datetime.now()
 
     total_price = 0
-    total_vat = 0
 
     # creating a unique file which does not pre-exist in Invoice folder using relative path
     _ = open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "x")
-
-
 
     # opening the file to write and generating the invoice
     with open(f"./Invoices/SHOP_({now.day}|{now.month}|{now.year})_({now.hour}:{now.minute}:{now.second}).txt", "w") as invoice:
@@ -43,19 +40,22 @@ def generate_invoice(invoice_details):
         invoice.write("--------------------------------------------------------- \n")
         invoice.write("| NAME \t\t\t| BRAND \t| QUANTITY \t|\n")
         invoice.write("--------------------------------------------------------- \n")
-        for details in invoice_details:
+        for index, details in enumerate(invoice_details):
             name = details[0]
             # details[1] is actually a list stored within the 2D list
             item_details = details[1]
+            print(item_details)
             for item_ in item_details:
                 # unpacking each value to store in the variables
                 item_brand, item_price, item_vat, item_quantity = item_
-                total_price += item_price
-                total_vat += item_vat
                 # writing the details in a tabulated manner
                 invoice.write(f"| {name}" + " " * (21 - len(str(name))) + " |" + f" {item_brand}" + " " * (
                         13 - len(item_brand)) + " |" + f" {item_quantity}" + " " * (
                                       13 - len(str(item_quantity))) + " |\n")
+                if index == len(invoice_details) - 1:
+                    continue
+                total_price += (item_quantity * item_price)
+                total_vat = 0.13 * total_price
         invoice.write("--------------------------------------------------------- \n")
         invoice.write("\n")
         invoice.write(f" {str(now)} \n")
@@ -81,18 +81,21 @@ def generate_invoice(invoice_details):
     print("--------------------------------------------------------- ")
     print("| NAME \t\t\t| BRAND \t| QUANTITY \t|")
     print("--------------------------------------------------------- ")
-    for details in invoice_details:
+    for index, details in enumerate(invoice_details):
         name = details[0]
         # details[1] is actually a list stored within the 2D list
         item_details = details[1]
         for item_ in item_details:
             # unpacking each value to store in the variables
             item_brand, item_price, item_vat, item_quantity = item_
-            total_price += item_price
-            total_vat += item_vat
             # printing the details in a tabulated manner
             print(f"| {name}", " " * (19 - len(str(name))), " |", f" {item_brand}", " " * (
                     10 - len(item_brand)), " |", f" {item_quantity}", " " * (10 - len(str(item_quantity))), " |")
+            if index == len(invoice_details)-1:
+                continue
+            total_price += (item_quantity * item_price)
+            total_vat = 0.13 * total_price
+
     print("--------------------------------------------------------- ")
     print(f" {str(now)} ")
     print("--------------------------------------------------------- ")

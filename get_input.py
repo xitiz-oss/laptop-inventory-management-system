@@ -101,7 +101,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
-            # executable code for when 'lenovo' ios chosen as the manufacturer
+            # executable code for when 'razer' chosen as the manufacturer
             elif manufacturer_chosen == "Razer":
                 razer = ["Razer Blade", 3000, "i7 7th Gen", "GTX 3070"]
                 print('''
@@ -139,7 +139,7 @@ def get_buy_details():
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
 
-            # executable code for when 'lenovo' ios chosen as the manufacturer
+            # executable code for when 'dell' chosen as the manufacturer
             elif manufacturer_chosen == "Dell":
                 dell = [["XPS", 1200, "i5 5th Gen", "GTX 3060"], ["Inspiron", 1000, "i5 9th Gen", "No GPU"]]
                 print('''
@@ -380,8 +380,7 @@ def get_info():
                 elif (int(read.read()[item_buy - 1][3]) - quantity_buy) < 0:
                     print()
                     print("NOT ENOUGH STOCK! ")
-                    print(f"We only have {read.read()[item_buy - 1][3]} "
-                          f"{read.read()[item_buy - 1][0]} left...")
+                    print(f"We only have {read.read()[item_buy - 1][3]} {read.read()[item_buy - 1][0]} left...")
                     print("Please make your selection accordingly")
                     print()
 
