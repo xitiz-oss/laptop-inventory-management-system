@@ -74,29 +74,31 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         lenovo_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if lenovo_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+
+                            elif lenovo_chosen == 1:
                                 return lenovo[0][0], manufacturer_chosen, quantity_chosen, lenovo[0][1], lenovo[0][2], lenovo[0][3]
 
                             elif lenovo_chosen == 2:
-                                print("Enter quantity:")
-                                quantity_chosen = int(input(">>>"))
                                 return lenovo[1][0], manufacturer_chosen, quantity_chosen, lenovo[1][1], lenovo[1][2], lenovo[1][3]
 
                             elif lenovo_chosen == 3:
-                                print("Enter quantity:")
-                                quantity_chosen = int(input(">>>"))
                                 return lenovo[2][0], manufacturer_chosen, quantity_chosen, lenovo[2][1], lenovo[2][2], lenovo[2][3]
 
                             elif lenovo_chosen > 3 or lenovo_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 lenovo_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
@@ -122,19 +124,25 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         razer_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if razer_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+
+                            elif razer_chosen == 1:
                                 return razer[0], manufacturer_chosen, quantity_chosen, razer[1], razer[2], razer[3]
 
                             elif razer_chosen > 1 or razer_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 razer_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
@@ -163,24 +171,28 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         dell_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if dell_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+
+                            elif dell_chosen == 1:
                                 return dell[0][0], manufacturer_chosen, quantity_chosen, dell[0][1], dell[0][2], dell[0][3]
 
                             elif dell_chosen == 2:
-                                print("Enter quantity:")
-                                quantity_chosen = int(input(">>>"))
                                 return dell[1][0], manufacturer_chosen, quantity_chosen, dell[1][1], dell[1][2], dell[1][3]
 
                             elif dell_chosen > 1 or dell_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 dell_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
@@ -206,19 +218,25 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         alienware_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if alienware_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+
+                            elif alienware_chosen == 1:
                                 return alienware[0], manufacturer_chosen, quantity_chosen, alienware[1], alienware[2], alienware[3]
 
                             elif alienware_chosen > 1 or alienware_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 alienware_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
@@ -247,24 +265,27 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         acer_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if acer_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+                            elif acer_chosen == 1:
                                 return acer[0][0], manufacturer_chosen, quantity_chosen, acer[0][1], acer[0][2], acer[0][3]
 
                             elif acer_chosen == 2:
-                                print("Enter quantity:")
-                                quantity_chosen = int(input(">>>"))
                                 return acer[1][0], manufacturer_chosen, quantity_chosen, acer[1][1], acer[1][2], acer[1][3]
 
                             elif acer_chosen > 2 or acer_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 acer_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")
@@ -294,24 +315,27 @@ def get_buy_details():
                     # usage of try-except block to handle the exceptions correctly
                     try:
                         apple_chosen = int(input(">>> "))
+                        print("Enter quantity:")
+                        quantity_chosen = int(input(">>>"))
                         while True:
                             # returning the respective values as per the selection made
-                            if apple_chosen == 1:
-                                print("Enter quantity:")
+                            if quantity_chosen <= 0:
+                                print("Re-Enter quantity:")
                                 quantity_chosen = int(input(">>>"))
+                            elif apple_chosen == 1:
                                 return apple[0][0], manufacturer_chosen, quantity_chosen, apple[0][1], apple[0][2], apple[0][3]
 
                             elif apple_chosen == 2:
-                                print("Enter quantity:")
-                                quantity_chosen = int(input(">>>"))
                                 return apple[1][0], manufacturer_chosen, quantity_chosen, apple[1][1], apple[1][2], apple[1][3]
 
                             elif apple_chosen > 1 or apple_chosen <= 0:
                                 print()
-                                print("INVALID INPUT")
+                                print("INVALID INPUT FOR CHOICE")
                                 print()
                                 print("Enter again: ")
                                 apple_chosen = int(input(">>> "))
+                                print("Enter quantity:")
+                                quantity_chosen = int(input(">>>"))
 
                     except ValueError:
                         print("ERROR \nENTER A INTEGER")

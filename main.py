@@ -157,6 +157,8 @@ def main():
 if __name__ == "__main__":
     # calling main method
     main()
+    print("Your stock has been updated")
+    operations.display()
     # asking the administrator for continuation in the interface
     print("Administrator, Would you like to return to the Shop's interface?")
     print('Enter "yes" or "no"')

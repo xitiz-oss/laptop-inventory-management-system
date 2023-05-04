@@ -1,5 +1,5 @@
 # global variables declaration
-global invoice_details, quantity, item, settings, lines, flag, same_laptop_dict, order_and_quantity
+global invoice_details, quantity, item, lines, flag, order_and_quantity
 
 
 # function which reads the original stock file
@@ -16,11 +16,11 @@ def read():
         # readlines() returns a list of each line
         lines = file.readlines()
         # checks for any blank line and if any present then it is stripped away
-        lines_stripped = [line for line in lines if line.strip()]
+        lines = [line for line in lines if line.strip()]
         # empty list
         specifications_details = []
         # iterating to unpack the file and create the 2d list
-        for each in lines_stripped:
+        for each in lines:
             specifications_details.append(each.split(", "))
 
     return specifications_details
