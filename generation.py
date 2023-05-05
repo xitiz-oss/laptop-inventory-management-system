@@ -115,33 +115,27 @@ def generate_invoice(invoice_details):
 
 
 # generate_receipt creates the receipt for the laptops sold by the administrator from the shop
-def generate_receipt(laptop_item, laptop_quantity, recipient_name):
+def generate_receipt(recipient_name, receipt_details):
     """
     When invoked, all the details regarding the selling part is unpacked to generate a receipt on file as well as by printing on console
 
     Parameters:
-        :param laptop_item: item id of laptop
-        :param laptop_quantity: quantity of laptop
+        :param receipt_details: data structure containing details of transaction
         :param recipient_name: name of the recipient
 
     Type:
-        :type laptop_item: int
-        :type laptop_quantity: int
+        :type receipt_details: list
         :type recipient_name: str
 
     """
-    #
+    total_price = 0
     now_ = datetime.now()
     # creating a file which does not pre-exist
-    __ = open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "x")
-
-    # calculating shipping cost and total price
-    shipping_cost = int(read.read()[laptop_item - 1][2]) * 0.03
-    total_price = int(read.read()[laptop_item - 1][2]) * laptop_quantity
+    __ = open(f"./Receipts/Laptops_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "x")
 
     # opening the file to write
     # receipt generated
-    with open(f"./Receipts/{read.read()[laptop_item - 1][0]}_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "w") as receipt:
+    with open(f"./Receipts/Laptops_{recipient_name}_receipt_({now_.day}|{now_.month}|{now_.year})({now_.hour}:{now_.minute}:{now_.second}).txt", "w") as receipt:
         receipt.write("========================================================= \n")
         receipt.write(f"                 ByteBrew Technologies \n")
         receipt.write("========================================================= \n")
@@ -156,10 +150,25 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
         receipt.write("--------------------------------------------------------- \n")
         receipt.write("| ITEM \t\t| NAME \t\t\t| QUANTITY \t|\n")
         receipt.write("--------------------------------------------------------- \n")
-        # writing the details in a tabulated manner
-        receipt.write(f"| {laptop_item})" + " " * (12 - len(str(laptop_item))) + " |" + f" {read.read()[laptop_item - 1][0]}" + " " * (
-                21 - len(read.read()[laptop_item - 1][0])) + " |" + f" {laptop_quantity}" + " " * (
-                              13 - len(str(laptop_quantity))) + " |" + "\n")
+        for index_, details_ in enumerate(receipt_details):
+            name_ = details_[0]
+            # details_[1] is actually a list stored within 2D list
+            sold_laptop_details = details_[1]
+            for sold_item in sold_laptop_details:
+                # unpacking each value to store in the variables
+                sold_price, sold_quantity = sold_item
+                # printing the details in a tabulated manner
+                receipt.write(f"| {index_ + 1})" + " " * (12 - len(str(index_))) + " |" + f" {name_}" + " " * (
+                        21 - len(name_)) + " |" + f" {sold_quantity}" + " " * (
+                                      13 - len(str(sold_quantity))) + " |\n")
+                if len(receipt_details) > 1:
+                    if index_ == len(receipt_details) - 1:
+                        continue
+                    total_price += int(sold_quantity) * int(sold_price)
+                    shipping_cost = 0.03 * total_price
+                else:
+                    total_price = int(sold_quantity) * int(sold_price)
+                    shipping_cost = 0.03 * total_price
         receipt.write("--------------------------------------------------------- \n")
         receipt.write("\n")
         receipt.write(f" {str(now_)} \n")
@@ -187,10 +196,26 @@ def generate_receipt(laptop_item, laptop_quantity, recipient_name):
     print("--------------------------------------------------------- ")
     print("| ITEM \t\t| NAME \t\t\t| QUANTITY  \t|")
     print("--------------------------------------------------------- ")
-    # printing the details in a tabulated manner
-    print(f"| {laptop_item})", " " * (10 - len(str(laptop_item))), " |", f" {read.read()[laptop_item - 1][0]}", " " * (
-            18 - len(read.read()[laptop_item - 1][0])), " |", f" {laptop_quantity}", " " * (
-                                       10 - len(str(laptop_quantity))), " |")
+    for index_, details_ in enumerate(receipt_details):
+        name_ = details_[0]
+        # details_[1] is actually a list stored within 2D list
+        sold_laptop_details = details_[1]
+        for sold_item in sold_laptop_details:
+            # unpacking each value to store in the variables
+            sold_price, sold_quantity = sold_item
+            # printing the details in a tabulated manner
+            print(f"| {index_ + 1})", " " * (10 - len(str(index_))), " |", f" {name_}", " " * (
+                    18 - len(name_)), " |", f" {sold_quantity}", " " * (
+                                              10 - len(str(sold_quantity))), " |")
+            if len(receipt_details) > 1:
+                if index_ == len(receipt_details) - 1:
+                    continue
+                total_price += int(sold_quantity) * int(sold_price)
+                shipping_cost = 0.03 * total_price
+            else:
+                total_price = int(sold_quantity) * int(sold_price)
+                shipping_cost = 0.03 * total_price
+
     print("--------------------------------------------------------- ")
     print(f" {str(now_)} ")
     print("--------------------------------------------------------- ")

@@ -346,24 +346,20 @@ def get_buy_details():
 
 
 # get_info method where administrator enters detail of the customer and the laptop being sold
-def get_info():
+def get_info(customer_name):
     """
     Admin enters the name of the customer and the choice of the laptop of customer such that the admin can sell the laptop to the customer
     Returns the buy id of laptop, quantity bought by the customer, customer name
 
+    Parameters:
+        :param customer_name: Name of the customer
+
+    Type:
+        :type customer_name: str
+
     Returns:
         :return: item_buy, quantity_buy, customer_name
     """
-    customer_name = input("Customer name: ").lstrip().rstrip()
-    operations.exit_on_will(customer_name)
-
-    print()
-    # usage of while loop to iterate if customer_name is not alphabetical characters
-    while not customer_name.isalpha():
-        print("Please enter a valid name and not an integer")
-        print()
-        customer_name = input("Customer name: ").lstrip().rstrip()
-        operations.exit_on_will(customer_name)
 
     # displaying laptops to show the id of laptops
     for i in range(len(read.read())):

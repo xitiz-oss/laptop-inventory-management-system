@@ -1,5 +1,5 @@
 # global variables declaration
-global invoice_details, quantity, item, lines, flag, order_and_quantity
+global invoice_details, receipt_details, quantity, item, lines, flag, order_and_quantity
 
 
 # function which reads the original stock file

@@ -16,16 +16,16 @@ def main():
     The entire flow of program is based around main()
     """
     # shop details
-    print("="*30)
+    print("=" * 30)
     print("ByteBrew Technologies")
-    print("="*30)
+    print("=" * 30)
     print("Putalisadak, Kathmandu 44600")
     print("P.O BOX: 3314-24500")
     print("TEL: 01-534029")
     print("laptop_shop@gmail.com")
-    print("="*30)
+    print("=" * 30)
     print()
-    
+
     print("=" * 25 + "\nx Welcome Administrator x\n" + "=" * 25)
     print()
     # entering "exit" at any time except for the middle of the program will exit the program and the data will be lost
@@ -105,27 +105,49 @@ def main():
                 break
 
     elif buy_sell == "sell":
+        read.receipt_details = []
+
         # entering the shops interface to sell the laptops to the customer
         print("======================================")
         print("Shop's Selling Interface(Sell Laptops)")
         print("======================================")
         print()
+
+        # getting the customer's name
+        customer_name = operations.get_customer_name()
+
         # calling the display method from operations which displays the available laptops in the stock file
         operations.display()
 
         # calling the get_info method from get_input which returns the respective values and unpacks in the given variables
-        laptop_sold, quantity_sold, name = get_input.get_info()
+        laptop_sold, quantity_sold, name = get_input.get_info(customer_name)
 
         # calling the sell method from sell_to_customer which returns the respective values and unpacks in the given variables
-        laptop_name, temp, new_qty, flag_ = sell_to_customer.sell(laptop_sold, quantity_sold)
+        laptop_name, laptop_price, temp, new_qty, flag_, more_laptop = sell_to_customer.sell(laptop_sold, quantity_sold)
 
         # calling the update method from update which updates the file with given parameters
         update.update(laptop_name, temp, new_qty, flag_)
 
-        # calling the generate_receipt method to generate receipt for each laptop bought by the customer
-        generation.generate_receipt(laptop_sold, quantity_sold, name)
+        while True:
+            # call to generate data structure which stores thw sold laptops
+            receipt_details = operations.generate_structure(read.receipt_details, laptop_name, quantity_sold, laptop_price)
 
-        # using while loop to create an infinite loop scenario unless the condition is fulfilled
+            # if the same customer has multiple laptops as their order
+            if more_laptop == "y":
+                # calling the get_info method from get_input which returns the respective values and unpacks in the given variables
+                laptop_sold, quantity_sold, name = get_input.get_info(customer_name)
+
+                # calling the sell method from sell_to_customer which returns the respective values and unpacks in the given variables
+                laptop_name, laptop_price, temp, new_qty, flag_, more_laptop = sell_to_customer.sell(laptop_sold, quantity_sold)
+
+                # calling the update method from update which updates the file with given parameters
+                update.update(laptop_name, temp, new_qty, flag_)
+
+            else:
+                # calling the generate_receipt method to generate receipt for each laptop bought by the customer
+                generation.generate_receipt(name, receipt_details)
+                break
+
         while True:
             print("Are there any other customers? (yes/no)")
             # prompting to see if there are more customers to sell the laptops to
@@ -139,16 +161,38 @@ def main():
                 operations.exit_on_will(sell_continuation)
 
             if sell_continuation == "yes":
+                # initiating an empty list for new customer
+                read.receipt_details = []
+
+                # call to get the customer name
+                customer_name = operations.get_customer_name()
+
+                # same function calls to execute similarly for the next customer
                 # if the admin decides to continue then all the necessary methods required for selling are carried out
                 operations.display()
 
-                laptop_sold, quantity_sold, name = get_input.get_info()
+                laptop_sold, quantity_sold, name = get_input.get_info(customer_name)
 
-                laptop_name, temp, new_qty, flag_ = sell_to_customer.sell(laptop_sold, quantity_sold)
+                laptop_name, laptop_price, temp, new_qty, flag_, more_laptop = sell_to_customer.sell(laptop_sold, quantity_sold)
 
                 update.update(laptop_name, temp, new_qty, flag_)
+                while True:
+                    receipt_details = operations.generate_structure(read.receipt_details, laptop_name, quantity_sold, laptop_price)
 
-                generation.generate_receipt(laptop_sold, quantity_sold, name)
+                    if more_laptop == "y":
+                        # calling the get_info method from get_input which returns the respective values and unpacks in the given variables
+                        laptop_sold, quantity_sold, name = get_input.get_info(customer_name)
+
+                        # calling the sell method from sell_to_customer which returns the respective values and unpacks in the given variables
+                        laptop_name, laptop_price, temp, new_qty, flag_, more_laptop = sell_to_customer.sell(laptop_sold, quantity_sold)
+
+                        # calling the update method from update which updates the file with given parameters
+                        update.update(laptop_name, temp, new_qty, flag_)
+
+                    else:
+                        # calling the generate_receipt method to generate receipt for each laptop bought by the customer
+                        generation.generate_receipt(name, receipt_details)
+                        break
             else:
                 print("___The receipt has been generated___")
                 break

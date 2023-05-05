@@ -17,7 +17,7 @@ def sell(laptop_sold, quantity_sold):
         :type quantity_sold int
 
     Returns:
-        :return: laptop_name, temp, new_qty, flag_
+        :return: laptop_name, temp, new_qty, flag_,more_laptop
     """
     flag_ = False
 
@@ -30,4 +30,17 @@ def sell(laptop_sold, quantity_sold):
     # accessing the name of the laptop
     laptop_name = read.read()[laptop_sold - 1][0]
 
-    return laptop_name, temp, new_qty, flag_
+    laptop_price = read.read()[laptop_sold - 1][2]
+
+    # continuation for more choice from the same customer
+    print(f"Has customer chosen more laptop?(y/n) ")
+    more_laptop = input(">>> ")
+    # validating input
+    while more_laptop not in ["y", "n"]:
+        print()
+        print("INVALID INPUT")
+        print("Enter 'y' or 'n'")
+        print()
+        more_laptop = input(">>> ")
+
+    return laptop_name, laptop_price, temp, new_qty, flag_, more_laptop
